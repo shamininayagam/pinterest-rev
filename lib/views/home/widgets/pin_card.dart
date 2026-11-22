@@ -41,18 +41,21 @@ class PinCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             child: Stack(
               children: [
-                AspectRatio(
-                  aspectRatio: widthOverHeight.clamp(0.5, 1.6),
-                  child: CachedNetworkImage(
-                    imageUrl: pin.imageUrl,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      color: placeholderColor,
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
-                      child: const Center(
-                        child: Icon(Icons.broken_image, color: Colors.grey),
+                Hero(
+                  tag: 'pin-${pin.id}',
+                  child: AspectRatio(
+                    aspectRatio: widthOverHeight.clamp(0.5, 1.6),
+                    child: CachedNetworkImage(
+                      imageUrl: pin.imageUrl,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Container(
+                        color: placeholderColor,
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
+                        child: const Center(
+                          child: Icon(Icons.broken_image, color: Colors.grey),
+                        ),
                       ),
                     ),
                   ),

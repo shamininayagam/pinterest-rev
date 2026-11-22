@@ -4,6 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../ui/ui.dart';
 import '../../view_model/feed_view_model.dart';
+import '../pin_detail/widgets/save_to_board_sheet.dart';
 import 'widgets/category_bar.dart';
 import 'widgets/pin_card.dart';
 
@@ -135,13 +136,13 @@ class HomeView extends ConsumerWidget {
                                   isLiked: isLiked,
                                   isSaved: isSaved,
                                   onTap: () {
-                                    // Milestone 3 will navigate to PinDetailScreen
+                                    context.push('/pin/${pin.id}');
                                   },
                                   onLikeToggle: () {
                                     feedNotifier.toggleLike(pin.id);
                                   },
                                   onSaveToggle: () {
-                                    feedNotifier.toggleSave(pin.id, pin.boardId);
+                                    SaveToBoardSheet.show(context, pin);
                                   },
                                 );
                               },
