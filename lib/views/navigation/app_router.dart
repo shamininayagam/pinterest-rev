@@ -5,6 +5,7 @@ import '../search/search_view.dart';
 import '../create_pin/create_pin_view.dart';
 import '../profile/profile_view.dart';
 import '../pin_detail/pin_detail_view.dart';
+import '../boards/board_detail_view.dart';
 import 'scaffold_with_nav_bar.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -67,6 +68,15 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         final pinId = state.pathParameters['id'] ?? '';
         return PinDetailView(pinId: pinId);
+      },
+    ),
+    // Full screen board detail route covering bottom bar
+    GoRoute(
+      path: '/board/:id',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) {
+        final boardId = state.pathParameters['id'] ?? '';
+        return BoardDetailView(boardId: boardId);
       },
     ),
   ],

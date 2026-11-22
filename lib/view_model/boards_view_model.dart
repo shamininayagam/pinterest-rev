@@ -56,6 +56,12 @@ class BoardsNotifier extends StateNotifier<BoardsState> {
     return newBoard;
   }
 
+  Future<void> updateBoard(Board updatedBoard) async {
+    final updated = state.boards.map((b) => b.id == updatedBoard.id ? updatedBoard : b).toList();
+    state = state.copyWith(boards: updated);
+    await _repository.saveBoards(updated);
+  }
+
   Future<void> setCoverPin(String boardId, String pinId) async {
     final updated = state.boards.map((b) {
       if (b.id == boardId && (b.coverPinId == null || b.coverPinId!.isEmpty)) {
