@@ -5,6 +5,7 @@ import 'tokens/spacing.dart';
 export 'tokens/colors.dart';
 export 'tokens/spacing.dart';
 export 'tokens/typography.dart';
+export 'widgets/app_image.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {

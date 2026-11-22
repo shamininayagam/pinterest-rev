@@ -45,13 +45,13 @@ class PinCard extends StatelessWidget {
                   tag: 'pin-${pin.id}',
                   child: AspectRatio(
                     aspectRatio: widthOverHeight.clamp(0.5, 1.6),
-                    child: CachedNetworkImage(
-                      imageUrl: pin.imageUrl,
+                    child: AppImage(
+                      url: pin.imageUrl,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => Container(
+                      placeholder: Container(
                         color: placeholderColor,
                       ),
-                      errorWidget: (context, url, error) => Container(
+                      errorWidget: Container(
                         color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
                         child: const Center(
                           child: Icon(Icons.broken_image, color: Colors.grey),

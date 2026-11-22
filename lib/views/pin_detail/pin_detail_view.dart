@@ -142,13 +142,13 @@ class _PinDetailViewState extends ConsumerState<PinDetailView> {
                   maxScale: 3.5,
                   child: AspectRatio(
                     aspectRatio: (1.0 / pin.aspectRatio).clamp(0.5, 1.8),
-                    child: CachedNetworkImage(
-                      imageUrl: pin.imageUrl,
+                    child: AppImage(
+                      url: pin.imageUrl,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => Container(
+                      placeholder: Container(
                         color: placeholderColor,
                       ),
-                      errorWidget: (context, url, error) => Container(
+                      errorWidget: Container(
                         color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
                         child: const Center(
                           child: Icon(Icons.broken_image, size: 48, color: Colors.grey),
