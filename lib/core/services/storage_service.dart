@@ -6,6 +6,7 @@ class StorageService {
   static const String _likesKey = 'pinterest_liked_ids';
   static const String _savedKey = 'pinterest_saved_ids';
   static const String _boardsKey = 'pinterest_boards_cache';
+  static const String _searchHistoryKey = 'pinterest_search_history';
 
   final SharedPreferences _prefs;
 
@@ -53,4 +54,13 @@ class StorageService {
 
   List<Map<String, dynamic>>? getBoards() => getJsonList(_boardsKey);
   Future<bool> saveBoards(List<Map<String, dynamic>> boards) => setJsonList(_boardsKey, boards);
+
+  List<String> getSearchHistory() {
+    return _prefs.getStringList(_searchHistoryKey) ??
+        ['Sports', 'Tokyo Neon', 'Minimalist Desk', 'Ceramics', 'Coffee'];
+  }
+
+  Future<bool> saveSearchHistory(List<String> history) {
+    return _prefs.setStringList(_searchHistoryKey, history);
+  }
 }
